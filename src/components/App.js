@@ -1,7 +1,9 @@
 import React from "react";
+import ComplaintForm from "./ComplaintForm";
+import ComplaintReg from "./ComplaintReg";
 
 function App() {
-  return <div>Hello World 2.0.2.0</div>;
+  return <div></div>;
 }
 
 export default App;
