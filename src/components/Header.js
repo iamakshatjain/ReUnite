@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Paper, Tabs, Tab } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
@@ -6,11 +6,9 @@ import GroupIcon from '@material-ui/icons/Group';
 
 import Map from './Map';
 
-const Header = () => {
-  const [value, setValue] = useState(0);
-
+const Header = ({ tab: value, handleTabChange }) => {
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    handleTabChange(newValue);
   };
 
   return (
