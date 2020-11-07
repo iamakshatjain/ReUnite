@@ -1,25 +1,17 @@
-import React, { Component } from 'react';
-import { Grid, Paper, Button, Box, Typography } from '@material-ui/core';
+import React from 'react';
+import { Grid, Button, Box, Typography } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
 
-import EditIcon from '@material-ui/icons/Edit';
 import ComplaintForm from './ComplaintForm';
 
 const ComplaintReg = () => {
   return (
     <div>
-      <Grid container xs={12}>
+      <Grid container>
         <Grid item xs={7} style={{ margin: '2%' }}>
           <ComplaintForm />
         </Grid>
-        <Grid
-          item
-          xs={4}
-          style={{ margin: '2%' }}
-          justifyContent="center"
-          justify="flex-end"
-          alignItems="center"
-        >
+        <Grid item xs={4} style={{ margin: '2%' }}>
           <Grid item align="center" style={{ margin: '2%' }}>
             <Box
               justifyContent="center"

@@ -4,8 +4,10 @@ import ComplaintList from './ComplaintList';
 import MatchedList from './MatchedList';
 import Header from './Header';
 import Container from '@material-ui/core/Container';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import UploadImage from './userSide/UploadImage';
 
-function App() {
+const Home = () => {
   const [tab, setTab] = useState(0);
 
   const TabPanel = (props) => {
@@ -32,6 +34,19 @@ function App() {
         </TabPanel>
       </Container>
     </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/user" component={UploadImage} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
