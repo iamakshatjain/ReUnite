@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import { Box, Grid, Button, Typography } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
-
+import Profile from './Profile';
 import * as faceapi from 'face-api.js';
 
 const MODEL_URL = '/models';
 const UploadImage = () => {
   const [widget, setWidget] = useState(null);
+  const [profileView, setProfileView] = useState(false);
 
   useEffect(() => {
     setWidget(
@@ -28,7 +29,6 @@ const UploadImage = () => {
             const img = await faceapi.fetchImage(
               'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
             );
-            // console.log(img);
 
             const fullFaceDescription = await faceapi
               .detectSingleFace(img)
@@ -46,31 +46,48 @@ const UploadImage = () => {
     );
   }, []);
 
+  const handleOnIconClick = () => {
+    console.log('hello');
+    setProfileView(true);
+  };
+
   const showWidget = () => {
     widget.open();
   };
 
   return (
-    <div display="flex">
-      <Grid container direction="row" justify="flex-end">
-        <Grid item>
-          <PersonOutlineIcon style={{ fontSize: 50, margin: 15 }} />
-        </Grid>
-      </Grid>
-      <Box
-        justifyContent="center"
-        display="flex"
-        alignItems="center"
-        style={{
-          height: '75vh'
-        }}
-      >
-        <Button variant="outlined" onClick={showWidget} color="primary">
-          <PublishIcon color="primary" />
-          <Typography>Upload Image</Typography>
-        </Button>
-      </Box>
-    </div>
+    <Fragment>
+      {profileView ? (
+        <Profile />
+      ) : (
+        <div display="flex">
+          <Grid container direction="row" justify="flex-end">
+            <Grid item>
+              <Button
+                onClick={() => {
+                  handleOnIconClick();
+                }}
+              >
+                <PersonOutlineIcon style={{ fontSize: 50, margin: 15 }} />
+              </Button>
+            </Grid>
+          </Grid>
+          <Box
+            justifyContent="center"
+            display="flex"
+            alignItems="center"
+            style={{
+              height: '75vh'
+            }}
+          >
+            <Button variant="outlined" onClick={showWidget} color="primary">
+              <PublishIcon color="primary" />
+              <Typography>Upload Image</Typography>
+            </Button>
+          </Box>
+        </div>
+      )}
+    </Fragment>
   );
 };
 

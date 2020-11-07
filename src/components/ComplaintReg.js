@@ -44,8 +44,10 @@ const ComplaintReg = () => {
             <Box
               justifyContent="center"
               display="flex"
+              border={1}
               alignItems="center"
-              style={{ width: 200, background: 'yellow', height: 200 }}
+              variant="outlined"
+              style={{ width: 200, height: 200, borderRadius: '5%' }}
             >
               <Button onClick={showWidget}>
                 <PublishIcon color="primary" />
@@ -55,7 +57,7 @@ const ComplaintReg = () => {
           </Grid>
 
           <Grid item align="center" style={{ margin: '2%' }}>
-            <Button variant="outlined" color="primary">
+            <Button color="primary">
               <Typography>Submit</Typography>
             </Button>
           </Grid>
