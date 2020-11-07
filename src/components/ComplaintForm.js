@@ -43,7 +43,7 @@ const ComplaintForm = () => {
   return (
     <Card style={{ padding: 10, borderRadius: '5%' }}>
       <Typography align="center">Complaint Form</Typography>
-      <Grid container style={{ marginTop: 20, justifyContent: 'center' }}>
+      <Grid container style={{ marginTop: 20 }}>
         <Grid item display="flex" justifyContent="center">
           <TextField
             className={classes.textField}
@@ -78,7 +78,7 @@ const ComplaintForm = () => {
           />
         </Grid>
 
-        <Grid container style={{ justifyContent: 'center', margin: 10 }}>
+        <Grid container style={{ margin: 10 }}>
           <Grid item display="flex" justifyContent="center">
             <TextField
               id="datetime-local"
@@ -91,7 +91,7 @@ const ComplaintForm = () => {
           </Grid>
         </Grid>
 
-        <Grid container display="flexbox" style={{ justifyContent: 'center' }}>
+        <Grid container display="flexbox">
           <Grid item justifyContent="center">
             <TextField
               className={classes.lowerTextField}

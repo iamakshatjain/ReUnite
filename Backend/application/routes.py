@@ -98,7 +98,7 @@ def get_info():
         for child in child_list:
             match_list = Match.query.filter_by(c_m_fid = child.c_fid)
             try:
-                res[child.image_url] = (child.name,[[match.image_url,match.confidence for match in match_list])
+                res[child.image_url] = (child.name,[[match.image_url,match.confidence] for match in match_list])
             except:
                 return jsonify({'resp':"error"})
         return jsonify(res)
