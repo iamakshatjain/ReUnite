@@ -50,5 +50,3 @@ creating a association table for the matches and the images
 # db.Column('c_fid',db.String,db.ForeignKey('child.c_fid'),primary_key=True),
 # db.Column('m_fid',db.String,db.ForeignKey('match.m_fid'),primary_key=True)
 # )
-
-
