@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Grid, Paper, Button, Box, Typography } from "@material-ui/core";
 import PublishIcon from "@material-ui/icons/Publish";
+
+import EditIcon from "@material-ui/icons/Edit";
 import ComplaintForm from "./ComplaintForm";
 const ComplaintReg = () => {
   return (
