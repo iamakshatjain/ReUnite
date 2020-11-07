@@ -1,9 +1,9 @@
 export const Complaints = [
   {
     name: 'Subhajit Nandi',
-    imageUrl: 'https://picsum.photos/200',
+    im_url: 'https://picsum.photos/200',
     age: 21,
-    gender: 'Male',
+    gender: 'male',
     skin: 'wheatish',
     guardian: {
       name: 'Uncle',
@@ -14,9 +14,9 @@ export const Complaints = [
   },
   {
     name: 'Mohit Jindal',
-    imageUrl: 'https://picsum.photos/200',
+    im_url: 'https://picsum.photos/200',
     age: 21,
-    gender: 'Male',
+    gender: 'male',
     skin: 'wheatish',
     guardian: {
       name: 'Uncle',
@@ -27,9 +27,9 @@ export const Complaints = [
   },
   {
     name: 'Sourabh Tripathi',
-    imageUrl: 'https://picsum.photos/200',
+    im_url: 'https://picsum.photos/200',
     age: 21,
-    gender: 'Male',
+    gender: 'male',
     skin: 'wheatish',
     guardian: {
       name: 'Uncle',
@@ -43,9 +43,9 @@ export const Complaints = [
 export const Matches = [
   {
     name: 'Subhajit Nandi',
-    imageUrl: 'https://picsum.photos/200',
+    im_url: 'https://picsum.photos/200',
     age: '21',
-    gender: 'Male',
+    gender: 'male',
     skin: 'Wheatish',
     guardian: {
       name: 'Uncle',
@@ -55,32 +55,31 @@ export const Matches = [
     lastSeen: 'Raja Park',
     matchingProfiles: [
       {
-        imageUrl: 'https://picsum.photos/200',
-        location: 'Raja Park', //TODO : Longitude and Latitude later
-        accuracy: '60%'
+        im_url: 'https://picsum.photos/200',
+        confidence: '60%'
       },
       {
-        imageUrl: 'https://picsum.photos/200',
+        im_url: 'https://picsum.photos/200',
         location: 'MGD', //TODO : Longitude and Latitude later
         accuracy: '62%'
       },
       {
-        imageUrl: 'https://picsum.photos/200',
+        im_url: 'https://picsum.photos/200',
         location: 'Raja Chowk', //TODO : Longitude and Latitude later
         accuracy: '80%'
       },
       {
-        imageUrl: 'https://picsum.photos/200',
+        im_url: 'https://picsum.photos/200',
         location: 'Kamal Park', //TODO : Longitude and Latitude later
         accuracy: '65%'
       },
       {
-        imageUrl: 'https://picsum.photos/200',
+        im_url: 'https://picsum.photos/200',
         location: 'Chawri Baazar', //TODO : Longitude and Latitude later
         accuracy: '70%'
       },
       {
-        imageUrl: 'https://picsum.photos/200',
+        im_url: 'https://picsum.photos/200',
         location: 'Polo Victory', //TODO : Longitude and Latitude later
         accuracy: '67%'
       }

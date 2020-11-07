@@ -34,8 +34,7 @@ def store_images():
         im_details = get_face_details(im_url)
         im_land_centroid = landmark_calc(im_details[0]['faceLandmarks'])
         fid = im_details[0]['faceId']
-        new_child = Child(c_fid=fid,im_land_centroid=im_land_centroid,name=name,age=age,image_url=im_url,
-        gender=gender)
+        new_child = Child(c_fid=fid,im_land_centroid=im_land_centroid,name=name,age=age,image_url=im_url,gender=gender,skin_color=skin_color,guardian_name=guardian_name,guardian_contact=guardian_contact,missing_time=missing_time,last_seen=last_seen)
         db.session.add(new_child)
         try:
             db.session.commit()
@@ -63,6 +62,7 @@ def check_images():
         age = im_details[0]['faceAttributes']['age']
         #first do a selective serach through the database
         images_to_match = Child.query.filter_by(gender=gender)
+        #print(gender)
         #select the relative images from the database
         for i in images_to_match:
             #compare those using the faceverify functionlity
@@ -72,6 +72,7 @@ def check_images():
             #param to be finetuned depending on the requirement of the accuracy of the user
             #print(temp_res)
             if(temp_res['confidence']>0.6):
+                #print(temp_res['confidence'])
                 new_match = Match(m_fid=fid,im_land_centroid=im_land_centroid,age=age,image_url=im_url,gender=gender,confidence=str(temp_res['confidence']),c_m_fid=i.c_fid)
                 db.session.add(new_match)
                 try:
@@ -98,7 +99,7 @@ def get_info():
         for child in child_list:
             match_list = Match.query.filter_by(c_m_fid = child.c_fid)
             try:
-                res[child.image_url] = (child.name,[[match.image_url,match.confidence] for match in match_list])
+                res[child.image_url] = (child.name,child.gender,child.age,child.skin_color,child.last_seen,[(match.image_url,match.confidence) for match in match_list])
             except:
                 return jsonify({'resp':"error"})
         return jsonify(res)
