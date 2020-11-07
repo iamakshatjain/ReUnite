@@ -44,7 +44,7 @@ const ComplaintForm = () => {
     <Card style={{ padding: 10, borderRadius: '5%' }}>
       <Typography align="center">Complaint Form</Typography>
       <Grid container style={{ marginTop: 20 }}>
-        <Grid item display="flex" justifyContent="center">
+        <Grid item display="flex">
           <TextField
             className={classes.textField}
             required
@@ -79,7 +79,7 @@ const ComplaintForm = () => {
         </Grid>
 
         <Grid container style={{ margin: 10 }}>
-          <Grid item display="flex" justifyContent="center">
+          <Grid item display="flex">
             <TextField
               id="datetime-local"
               label="Missing Time"
@@ -92,7 +92,7 @@ const ComplaintForm = () => {
         </Grid>
 
         <Grid container display="flexbox">
-          <Grid item justifyContent="center">
+          <Grid item>
             <TextField
               className={classes.lowerTextField}
               required
