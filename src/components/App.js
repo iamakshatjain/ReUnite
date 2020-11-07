@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ComplaintReg from './ComplaintReg';
 import ComplaintList from './ComplaintList';
+import MatchedList from './MatchedList';
 import Header from './Header';
 import Container from '@material-ui/core/Container';
 
@@ -26,7 +27,9 @@ function App() {
           <ComplaintReg />
           <ComplaintList />
         </TabPanel>
-        <TabPanel index={2}>Matches</TabPanel>
+        <TabPanel index={2}>
+          <MatchedList />
+        </TabPanel>
       </Container>
     </div>
   );
