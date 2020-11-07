@@ -25,6 +25,11 @@ def store_images():
         name = resp['name']
         age = resp['age']
         gender = resp['gender']
+        skin_color = resp['skin']
+        guardian_name = resp['guardian']['name']
+        guardian_contact = resp['guardian']['contact']
+        missing_time = resp['missingTime']
+        last_seen = resp['lastSeen']
         #get image details store them in the image database
         im_details = get_face_details(im_url)
         im_land_centroid = landmark_calc(im_details[0]['faceLandmarks'])
@@ -67,7 +72,7 @@ def check_images():
             #param to be finetuned depending on the requirement of the accuracy of the user
             #print(temp_res)
             if(temp_res['confidence']>0.6):
-                new_match = Match(m_fid=fid,im_land_centroid=im_land_centroid,age=age,image_url=im_url,gender=gender,c_m_fid=i.c_fid)
+                new_match = Match(m_fid=fid,im_land_centroid=im_land_centroid,age=age,image_url=im_url,gender=gender,confidence=str(temp_res['confidence']),c_m_fid=i.c_fid)
                 db.session.add(new_match)
                 try:
                     db.session.commit()
@@ -93,7 +98,7 @@ def get_info():
         for child in child_list:
             match_list = Match.query.filter_by(c_m_fid = child.c_fid)
             try:
-                res[child.image_url] = (child.name,[match.image_url for match in match_list])
+                res[child.image_url] = (child.name,[[match.image_url,match.confidence for match in match_list])
             except:
                 return jsonify({'resp':"error"})
         return jsonify(res)

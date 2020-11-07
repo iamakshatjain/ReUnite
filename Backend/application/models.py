@@ -23,6 +23,11 @@ class Child(db.Model):
     age = db.Column(db.Integer)
     image_url = db.Column(db.String)
     gender = db.Column(db.String)
+    skin_color = db.Column(db.String)
+    guardian_name = db.Column(db.String)
+    guardian_contact = db.Column(db.String)
+    missing_time = db.Column(db.String)
+    last_seen = db.Column(db.String)
     matches = db.relationship('Match',backref='match_images')
 
 class Match(db.Model):
@@ -34,6 +39,7 @@ class Match(db.Model):
     age = db.Column(db.Integer)
     image_url = db.Column(db.String)
     gender = db.Column(db.String)
+    confidence = db.Column(db.String)
     c_m_fid = db.Column(db.String,db.ForeignKey('child.c_fid'),nullable = False)
 
 """
