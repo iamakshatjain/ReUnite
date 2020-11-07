@@ -1,6 +1,7 @@
 export const Complaints = [
   {
     name: 'Subhajit Nandi',
+    imageUrl: 'https://picsum.photos/200',
     age: 21,
     gender: 'Male',
     skin: 'wheatish',
@@ -13,6 +14,7 @@ export const Complaints = [
   },
   {
     name: 'Mohit Jindal',
+    imageUrl: 'https://picsum.photos/200',
     age: 21,
     gender: 'Male',
     skin: 'wheatish',
@@ -25,6 +27,7 @@ export const Complaints = [
   },
   {
     name: 'Sourabh Tripathi',
+    imageUrl: 'https://picsum.photos/200',
     age: 21,
     gender: 'Male',
     skin: 'wheatish',
@@ -36,7 +39,6 @@ export const Complaints = [
     lastSeen: 'Raja Park'
   }
 ];
-
 
 export const Matches = [
   {

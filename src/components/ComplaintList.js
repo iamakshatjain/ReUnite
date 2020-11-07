@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const ComplaintCard = ({complaint}) => {
-    const {name, age, gender, skin, guardian : {name : guardianName, contact : guardianContact}, missingTime, lastSeen} = complaint;
+    const {name, age, gender, skin, imageUrl, guardian : {name : guardianName, contact : guardianContact}, missingTime, lastSeen} = complaint;
     const classes = useStyles();
     return(
         <Card style={{margin : '10px 0px'}}>
             <Accordion>
                 <AccordionSummary expandIcon={<ExpandMoreIcon style={{fontSize:'2rem'}}/>}>
                     <div style={{width:'100%', display:'flex', alignItems : 'center'}}>
-                        <Avatar className={classes.large}>{name[0]}</Avatar>
+                        <Avatar className={classes.large} src={imageUrl} alt={name}/>
                         <div>
                             <div style={{fontSize : '2rem'}}>{name}</div>
                             <div style={{fontSize : '0.8rem'}}>Missing Time : {missingTime}</div>
