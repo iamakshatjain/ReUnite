@@ -3,39 +3,57 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import { Box, Grid, Button, Typography } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
 
+import * as faceapi from 'face-api.js';
+
+const MODEL_URL = '/models';
 const UploadImage = () => {
-  const [imageURL, setImageURL] = useState('');
   const [widget, setWidget] = useState(null);
-
-  const showWidget = () => {
-    widget.open();
-  };
-
-  const checkUploadResult = (resultEvent) => {
-    if (resultEvent.event === 'success') {
-      console.log(resultEvent.info);
-      setImageURL(resultEvent.info.secure_url);
-    }
-  };
 
   useEffect(() => {
     setWidget(
       window.cloudinary.createUploadWidget(
         {
           cloudName: 'whiteknight',
-          uploadPreset: 'b0z6jywd'
+          uploadPreset: 'b0z6jywd',
+          sources: ['camera']
         },
-        (err, result) => {
-          checkUploadResult(result);
+        async (err, result) => {
+          if (result.event === 'success') {
+            console.log(result.info);
+
+            await faceapi.loadSsdMobilenetv1Model(MODEL_URL);
+            await faceapi.loadFaceLandmarkModel(MODEL_URL);
+            await faceapi.loadFaceRecognitionModel(MODEL_URL);
+            // const img = await faceapi.fetchImage(result.info.secure_url);
+            const img = await faceapi.fetchImage(
+              'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+            );
+            // console.log(img);
+
+            const fullFaceDescription = await faceapi
+              .detectSingleFace(img)
+              .withFaceLandmarks()
+              .withFaceDescriptor();
+
+            if (!fullFaceDescription) {
+              alert(`no faces detected!`);
+            } else {
+              console.log(fullFaceDescription);
+            }
+          }
         }
       )
     );
   }, []);
 
+  const showWidget = () => {
+    widget.open();
+  };
+
   return (
     <div display="flex">
       <Grid container direction="row" justify="flex-end">
-        <Grid item justifyItems="center">
+        <Grid item>
           <PersonOutlineIcon style={{ fontSize: 50, margin: 15 }} />
         </Grid>
       </Grid>

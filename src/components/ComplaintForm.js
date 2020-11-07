@@ -42,7 +42,9 @@ const ComplaintForm = () => {
 
   return (
     <Card style={{ padding: 10, borderRadius: '5%' }}>
-      <Typography align="center">Complaint Form</Typography>
+      <Typography align="center" variant="h5">
+        Complaint Form
+      </Typography>
       <Grid container style={{ marginTop: 20 }}>
         <Grid item display="flex">
           <TextField
