@@ -5,6 +5,7 @@ import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import GroupIcon from '@material-ui/icons/Group';
 
 import Map from './Map';
+import UserApp from './UserApp';
 
 const Header = ({ tab: value, handleTabChange }) => {
   const handleChange = (event, newValue) => {
@@ -26,6 +27,7 @@ const Header = ({ tab: value, handleTabChange }) => {
         <Tab icon={<GroupIcon />} label="MATCHES" />
       </Tabs>
       <Map />
+      <UserApp />
     </Paper>
   );
 };
