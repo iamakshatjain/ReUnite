@@ -18,7 +18,7 @@ const ComplaintCard = ({complaint}) => {
     const {name, age, gender, skin, guardian : {name : guardianName, contact : guardianContact}, missingTime, lastSeen} = complaint;
     const classes = useStyles();
     return(
-        <Card style={{margin : '10px'}}>
+        <Card style={{margin : '10px 0px'}}>
             <Accordion>
                 <AccordionSummary expandIcon={<ExpandMoreIcon style={{fontSize:'2rem'}}/>}>
                     <div style={{width:'100%', display:'flex', alignItems : 'center'}}>
@@ -48,6 +48,7 @@ const ComplaintCard = ({complaint}) => {
 const ComplaintList = () => {
     return(
     <React.Fragment>
+        <div style={{fontSize : '2rem'}}>Complaints ({Complaints.length})</div>
        {Complaints.map((complaint, index) => <ComplaintCard key={index} complaint={complaint}/>)}
     </React.Fragment>
     );

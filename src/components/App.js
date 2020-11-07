@@ -1,13 +1,33 @@
-import React from 'react';
-import ComplaintForm from './ComplaintForm';
+import React, { useState } from 'react';
 import ComplaintReg from './ComplaintReg';
 import ComplaintList from './ComplaintList';
 import Header from './Header';
+import Container from '@material-ui/core/Container';
 
 function App() {
+  const [tab, setTab] = useState(0);
+
+  const TabPanel = (props) => {
+    const { children, index } = props;
+    if (index === tab) return <React.Fragment>{children}</React.Fragment>;
+    else return null;
+  };
+
+  const handleTabChange = (newTab) => {
+    setTab(newTab);
+  };
+
   return (
     <div>
-      <ComplaintReg />
+      <Header tab={tab} handleTabChange={handleTabChange} />
+      <Container>
+        <TabPanel index={0}>Home</TabPanel>
+        <TabPanel index={1}>
+          <ComplaintReg />
+          <ComplaintList />
+        </TabPanel>
+        <TabPanel index={2}>Matches</TabPanel>
+      </Container>
     </div>
   );
 }
