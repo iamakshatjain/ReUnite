@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import axios from 'axios';
 import {
   Grid,
   Card,
@@ -7,9 +8,11 @@ import {
   Typography,
   InputLabel,
   TextField,
-  FormControl
+  FormControl,
+  Button
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
+import ComplaintReg from './ComplaintReg';
 
 const useStyles = makeStyles((theme) => ({
   textField: {
@@ -34,10 +37,49 @@ const useStyles = makeStyles((theme) => ({
 const ComplaintForm = () => {
   const classes = useStyles();
 
+  const [img, setImg] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [gName, setGName] = React.useState('');
+  const [gContact, setGContact] = React.useState('');
+  const [lastSeen, setLastSeen] = React.useState('');
+  const [missTime, setMissTime] = React.useState('');
   const [gender, setGender] = React.useState('');
+  const [skin, setSkin] = React.useState('');
+  const [height, setHeight] = React.useState('');
+  const [age, setAge] = React.useState(0);
 
-  const handleChange = (event) => {
-    setGender(event.target.value);
+  const handleChange = (event, method) => {
+    method(event.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    const data = {
+      name,
+      im_url:
+        img ||
+        'https://cdn.cdnparenting.com/articles/2018/12/Featured-image1.jpg',
+      age: age,
+      gender,
+      skin,
+      guardian: {
+        name: gName,
+        contact: gContact
+      },
+      missingTime: missTime,
+      lastSeen
+    };
+    axios
+      .post('https://relice.herokuapp.com/store', data)
+      .then((response) => {
+        console.log(response);
+        if (response.data.resp === 'CADDED') alert('Complaint Created');
+        else alert('Complaint not Created, clear database');
+      })
+
+      .catch((err) => {
+        console.log(err);
+        alert('Error');
+      });
   };
 
   return (
@@ -53,6 +95,8 @@ const ComplaintForm = () => {
             id="outlined-required"
             label="Name"
             variant="outlined"
+            value={name}
+            onChange={(e) => handleChange(e, setName)}
           />
 
           <TextField
@@ -61,6 +105,8 @@ const ComplaintForm = () => {
             id="outlined-required"
             label="Parent/Guardian Name"
             variant="outlined"
+            value={gName}
+            onChange={(e) => handleChange(e, setGName)}
           />
 
           <TextField
@@ -69,6 +115,8 @@ const ComplaintForm = () => {
             id="outlined-required"
             label="Mobile No."
             variant="outlined"
+            value={gContact}
+            onChange={(e) => handleChange(e, setGContact)}
           />
 
           <TextField
@@ -77,6 +125,8 @@ const ComplaintForm = () => {
             id="outlined-required"
             label="Last Seen"
             variant="outlined"
+            value={lastSeen}
+            onChange={(e) => handleChange(e, setLastSeen)}
           />
         </Grid>
 
@@ -89,6 +139,8 @@ const ComplaintForm = () => {
               InputLabelProps={{
                 shrink: true
               }}
+              value={missTime}
+              onChange={(e) => handleChange(e, setMissTime)}
             />
           </Grid>
         </Grid>
@@ -101,6 +153,8 @@ const ComplaintForm = () => {
               id="outlined-required"
               label="Age"
               variant="outlined"
+              value={age}
+              onChange={(e) => handleChange(e, setAge)}
             />
             <FormControl variant="outlined" className={classes.lowerTextField}>
               <InputLabel>Gender</InputLabel>
@@ -108,12 +162,11 @@ const ComplaintForm = () => {
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 value={gender}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e, setGender)}
                 label="Gender"
               >
-                <MenuItem value={'Male'}>Male</MenuItem>
-                <MenuItem value={'Female'}>Female</MenuItem>
-                <MenuItem value={'Other'}>Other</MenuItem>
+                <MenuItem value={'male'}>Male</MenuItem>
+                <MenuItem value={'female'}>Female</MenuItem>
               </Select>
             </FormControl>
             <TextField
@@ -122,6 +175,8 @@ const ComplaintForm = () => {
               id="outlined-required"
               label="Skin"
               variant="outlined"
+              value={skin}
+              onChange={(e) => handleChange(e, setSkin)}
             />
 
             <TextField
@@ -130,7 +185,15 @@ const ComplaintForm = () => {
               id="outlined-required"
               label="Height"
               variant="outlined"
+              value={height}
+              onChange={(e) => handleChange(e, setHeight)}
             />
+          </Grid>
+          <Grid item align="center" style={{ margin: '2%' }}>
+            <ComplaintReg img={img} setImg={setImg} />
+            <Button color="primary" onClick={handleSubmit}>
+              <Typography>Submit</Typography>
+            </Button>
           </Grid>
         </Grid>
       </Grid>

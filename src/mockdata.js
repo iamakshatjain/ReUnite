@@ -1,7 +1,7 @@
 export const Complaints = [
   {
     name: 'Subhajit Nandi',
-    im_url: 'https://picsum.photos/200',
+    im_url: 'https://cdn.cdnparenting.com/articles/2018/12/Featured-image1.jpg',
     age: 21,
     gender: 'male',
     skin: 'wheatish',
@@ -14,22 +14,9 @@ export const Complaints = [
   },
   {
     name: 'Mohit Jindal',
-    im_url: 'https://picsum.photos/200',
+    im_url: 'https://etimg.etb2bimg.com/photo/67497750.cms',
     age: 21,
-    gender: 'male',
-    skin: 'wheatish',
-    guardian: {
-      name: 'Uncle',
-      contact: '1234567890'
-    },
-    missingTime: '10:30 am',
-    lastSeen: 'Raja Park'
-  },
-  {
-    name: 'Sourabh Tripathi',
-    im_url: 'https://picsum.photos/200',
-    age: 21,
-    gender: 'male',
+    gender: 'Male',
     skin: 'wheatish',
     guardian: {
       name: 'Uncle',
@@ -43,9 +30,10 @@ export const Complaints = [
 export const Matches = [
   {
     name: 'Subhajit Nandi',
-    im_url: 'https://picsum.photos/200',
-    age: '21',
-    gender: 'male',
+    im_url:
+      'https://indianewengland.com/wp-content/uploads/2016/01/Obama-Headshot.jpg',
+    age: 21,
+    gender: 'Male',
     skin: 'Wheatish',
     guardian: {
       name: 'Uncle',
@@ -55,33 +43,9 @@ export const Matches = [
     lastSeen: 'Raja Park',
     matchingProfiles: [
       {
-        im_url: 'https://picsum.photos/200',
-        confidence: '60%'
-      },
-      {
-        im_url: 'https://picsum.photos/200',
-        location: 'MGD', //TODO : Longitude and Latitude later
-        accuracy: '62%'
-      },
-      {
-        im_url: 'https://picsum.photos/200',
-        location: 'Raja Chowk', //TODO : Longitude and Latitude later
-        accuracy: '80%'
-      },
-      {
-        im_url: 'https://picsum.photos/200',
-        location: 'Kamal Park', //TODO : Longitude and Latitude later
-        accuracy: '65%'
-      },
-      {
-        im_url: 'https://picsum.photos/200',
-        location: 'Chawri Baazar', //TODO : Longitude and Latitude later
-        accuracy: '70%'
-      },
-      {
-        im_url: 'https://picsum.photos/200',
-        location: 'Polo Victory', //TODO : Longitude and Latitude later
-        accuracy: '67%'
+        im_url:
+          'https://indianewengland.com/wp-content/uploads/2016/01/Obama-Headshot.jpg',
+        confidence: '100%'
       }
     ]
   }

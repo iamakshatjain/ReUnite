@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Button, Box, Typography } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
 
-import ComplaintForm from './ComplaintForm';
-
-const ComplaintReg = () => {
-  const [imageURL, setImageURL] = useState('');
+const ComplaintReg = ({ img, setImg }) => {
   const [widget, setWidget] = useState(null);
 
   const showWidget = () => {
@@ -15,7 +12,7 @@ const ComplaintReg = () => {
   const checkUploadResult = (resultEvent) => {
     if (resultEvent.event === 'success') {
       console.log(resultEvent.info);
-      setImageURL(resultEvent.info.secure_url);
+      setImg(resultEvent.info.secure_url);
     }
   };
 
@@ -36,9 +33,6 @@ const ComplaintReg = () => {
   return (
     <div>
       <Grid container>
-        <Grid item xs={7} style={{ marginTop: '2%', marginBottom: '2%' }}>
-          <ComplaintForm />
-        </Grid>
         <Grid item xs={4} style={{ margin: '2%' }}>
           <Grid item align="center" style={{ margin: '2%' }}>
             <Box
@@ -49,18 +43,26 @@ const ComplaintReg = () => {
               variant="outlined"
               style={{ width: 200, height: 200, borderRadius: '5%' }}
             >
-              <Button onClick={showWidget}>
-                <PublishIcon color="primary" />
-                <Typography>Upload Image</Typography>
-              </Button>
+              {img ? (
+                <img
+                  src={img}
+                  alt="user"
+                  style={{ width: 200, height: 200, borderRadius: '5%' }}
+                />
+              ) : (
+                <Button onClick={showWidget}>
+                  <PublishIcon color="primary" />
+                  <Typography>Upload Image</Typography>
+                </Button>
+              )}
             </Box>
           </Grid>
 
-          <Grid item align="center" style={{ margin: '2%' }}>
+          {/* <Grid item align="center" style={{ margin: '2%' }}>
             <Button color="primary">
               <Typography>Submit</Typography>
             </Button>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Grid>
     </div>
