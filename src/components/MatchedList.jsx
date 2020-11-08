@@ -82,6 +82,7 @@ const MatchCard = ({ match }) => {
 
   console.log(name);
   const classes = useStyles();
+  if(matchingProfiles.length > 0)
   return (
     <Card style={{ margin: '10px 0px' }}>
       <Accordion>
@@ -112,6 +113,7 @@ const MatchCard = ({ match }) => {
       </Accordion>
     </Card>
   );
+  else return null;
 };
 
 const MatchedList = () => {
