@@ -50,7 +50,7 @@ const MatchingProfiles = ({ profiles }) => {
 
       <ul style={{ fontSize: '1.2rem' }}>
         {profiles[selectedProfile] && (
-          <div>Accuracy : {profiles[selectedProfile][1]}</div>
+          <div>Accuracy : {parseFloat(profiles[selectedProfile][1])*100}%</div>
         )}
         <div>Location : "{locations[Math.floor(10 * Math.random()) % 4]}"</div>
       </ul>

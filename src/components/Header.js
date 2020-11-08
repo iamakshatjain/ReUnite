@@ -19,7 +19,7 @@ const Header = ({ tab: value, handleTabChange }) => {
         textColor="secondary"
         aria-label="icon label tabs example"
       >
-        <Tab icon={<HomeIcon />} label="HOME" />
+        {/* <Tab icon={<HomeIcon />} label="HOME" /> */}
         <Tab icon={<RecentActorsIcon />} label="COMPLAINTS" />
         <Tab icon={<GroupIcon />} label="MATCHES" />
       </Tabs>

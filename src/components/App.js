@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UploadImage from './userSide/UploadImage';
 
 const Home = () => {
-  const [tab, setTab] = useState(1);
+  const [tab, setTab] = useState(0);
 
   const TabPanel = (props) => {
     const { children, index } = props;
@@ -24,14 +24,14 @@ const Home = () => {
     <div>
       <Header tab={tab} handleTabChange={handleTabChange} />
       <Container>
-        <TabPanel index={0}>
+        {/* <TabPanel index={0}>
           <img src="https://i.ibb.co/vs9SVpL/a.jpg" alt="map" />
-        </TabPanel>
-        <TabPanel index={1}>
+        </TabPanel> */}
+        <TabPanel index={0}>
           <ComplaintForm />
           <ComplaintList />
         </TabPanel>
-        <TabPanel index={2}>
+        <TabPanel index={1}>
           <MatchedList />
         </TabPanel>
       </Container>

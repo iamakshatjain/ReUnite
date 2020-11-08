@@ -75,7 +75,19 @@ const ComplaintForm = () => {
         if (response.data.resp === 'CADDED') alert('Complaint Created');
         else alert('Complaint not Created, clear database');
       })
-
+      .then(() => {
+        setName('');
+        setImg('');
+        setGName('');
+        setGContact('');
+        setGContact('');
+        setLastSeen('');
+        setMissTime('');
+        setGender('');
+        setSkin('');
+        setHeight('');
+        setAge(0);
+      })
       .catch((err) => {
         console.log(err);
         alert('Error');
@@ -83,7 +95,7 @@ const ComplaintForm = () => {
   };
 
   return (
-    <Card style={{ padding: 10, borderRadius: '5%' }}>
+    <Card style={{ padding: 10, borderRadius: '5%', margin: '2rem 0px' }}>
       <Typography align="center" variant="h5">
         Complaint Form
       </Typography>
