@@ -47,9 +47,11 @@ const MatchingProfiles = ({ profiles }) => {
           />
         ))}
       </div>
-      <ul style={{ fontSize: '1.2rem' }}>
-        <div>Accuracy : {profiles[selectedProfile][1]}</div>
 
+      <ul style={{ fontSize: '1.2rem' }}>
+        {profiles[selectedProfile] && (
+          <div>Accuracy : {profiles[selectedProfile][1]}</div>
+        )}
         <div>Location : "{locations[Math.floor(10 * Math.random()) % 4]}"</div>
       </ul>
     </React.Fragment>
