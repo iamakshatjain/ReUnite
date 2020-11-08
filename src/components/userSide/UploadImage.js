@@ -9,14 +9,14 @@ const MODEL_URL = '/models';
 const UploadImage = () => {
   const [widget, setWidget] = useState(null);
   const [profileView, setProfileView] = useState(false);
-
+  const [image, setImage] = useState('');
   useEffect(() => {
     setWidget(
       window.cloudinary.createUploadWidget(
         {
           cloudName: 'whiteknight',
           uploadPreset: 'b0z6jywd',
-          sources: ['camera']
+          sources: ['camera', 'url']
         },
         async (err, result) => {
           if (result.event === 'success') {
@@ -25,10 +25,11 @@ const UploadImage = () => {
             await faceapi.loadSsdMobilenetv1Model(MODEL_URL);
             await faceapi.loadFaceLandmarkModel(MODEL_URL);
             await faceapi.loadFaceRecognitionModel(MODEL_URL);
-            // const img = await faceapi.fetchImage(result.info.secure_url);
-            const img = await faceapi.fetchImage(
-              'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-            );
+            const img = await faceapi.fetchImage(result.info.secure_url);
+            console.log(result.info.secure_url);
+            // const img = await faceapi.fetchImage(
+            //   'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+            // );
 
             const fullFaceDescription = await faceapi
               .detectSingleFace(img)
@@ -36,9 +37,18 @@ const UploadImage = () => {
               .withFaceDescriptor();
 
             if (!fullFaceDescription) {
-              alert(`no faces detected!`);
+              alert(`no human faces detected!`);
             } else {
-              console.log(fullFaceDescription);
+              const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ im_url: result.info.secure_url })
+              };
+              fetch('https://relice.herokuapp.com/check', requestOptions)
+                .then((response) => response.json())
+                .then((resp) => {
+                  console.log(resp);
+                });
             }
           }
         }
