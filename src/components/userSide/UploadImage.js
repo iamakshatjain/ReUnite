@@ -48,6 +48,7 @@ const UploadImage = () => {
                 .then((response) => response.json())
                 .then((resp) => {
                   console.log(resp);
+                  alert('Reported');
                 });
             }
           }

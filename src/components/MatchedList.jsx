@@ -52,7 +52,7 @@ const MatchingProfiles = ({ profiles }) => {
         {profiles[selectedProfile] && (
           <div>Accuracy : {parseFloat(profiles[selectedProfile][1])*100}%</div>
         )}
-        <div>Location : "{locations[Math.floor(10 * Math.random()) % 4]}"</div>
+        {profiles.length>0 && <div>Location : "{locations[Math.floor(10 * Math.random()) % 4]}"</div>}
       </ul>
     </React.Fragment>
   );
