@@ -9,7 +9,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
 // TODO : remove mocking
-import { Complaints } from '../mockdata';
+// import { Complaints } from '../mockdata';
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -63,7 +63,7 @@ const ComplaintCard = ({ complaint }) => {
   );
 };
 
-const ComplaintList = () => {
+const ComplaintList = ({ Complaints }) => {
   return (
     <React.Fragment>
       <div style={{ fontSize: '2rem' }}>Complaints ({Complaints.length})</div>

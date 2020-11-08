@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ComplaintForm = () => {
+const ComplaintForm = ({ Complaints, setComplaints }) => {
   const classes = useStyles();
 
   const [img, setImg] = React.useState('');
@@ -68,6 +68,8 @@ const ComplaintForm = () => {
       missingTime: missTime,
       lastSeen
     };
+    setComplaints([...Complaints, data]);
+    console.log(data);
     axios
       .post('https://relice.herokuapp.com/store', data)
       .then((response) => {

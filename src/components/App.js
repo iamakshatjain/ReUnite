@@ -9,6 +9,7 @@ import UploadImage from './userSide/UploadImage';
 
 const Home = () => {
   const [tab, setTab] = useState(0);
+  const [complaints, setComplaints] = useState([]);
 
   const TabPanel = (props) => {
     const { children, index } = props;
@@ -28,8 +29,11 @@ const Home = () => {
           <img src="https://i.ibb.co/vs9SVpL/a.jpg" alt="map" />
         </TabPanel> */}
         <TabPanel index={0}>
-          <ComplaintForm />
-          <ComplaintList />
+          <ComplaintForm
+            Complaints={complaints}
+            setComplaints={setComplaints}
+          />
+          <ComplaintList Complaints={complaints} />
         </TabPanel>
         <TabPanel index={1}>
           <MatchedList />
