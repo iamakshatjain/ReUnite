@@ -37,7 +37,7 @@ const UploadImage = () => {
               .withFaceDescriptor();
 
             if (!fullFaceDescription) {
-              alert(`no faces detected!`);
+              alert(`no human faces detected!`);
             } else {
               const requestOptions = {
                 method: 'POST',
