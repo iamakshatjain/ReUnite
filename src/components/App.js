@@ -25,9 +25,6 @@ const Home = () => {
     <div>
       <Header tab={tab} handleTabChange={handleTabChange} />
       <Container>
-        {/* <TabPanel index={0}>
-          <img src="https://i.ibb.co/vs9SVpL/a.jpg" alt="map" />
-        </TabPanel> */}
         <TabPanel index={0}>
           <ComplaintForm
             Complaints={complaints}

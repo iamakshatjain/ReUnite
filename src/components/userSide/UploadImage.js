@@ -9,7 +9,7 @@ const MODEL_URL = '/models';
 const UploadImage = () => {
   const [widget, setWidget] = useState(null);
   const [profileView, setProfileView] = useState(false);
-  const [image, setImage] = useState('');
+  // const [image, setImage] = useState('');
   useEffect(() => {
     setWidget(
       window.cloudinary.createUploadWidget(
@@ -20,8 +20,6 @@ const UploadImage = () => {
         },
         async (err, result) => {
           if (result.event === 'success') {
-            console.log(result.info);
-
             await faceapi.loadSsdMobilenetv1Model(MODEL_URL);
             await faceapi.loadFaceLandmarkModel(MODEL_URL);
             await faceapi.loadFaceRecognitionModel(MODEL_URL);
@@ -44,12 +42,12 @@ const UploadImage = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ im_url: result.info.secure_url })
               };
-              fetch('https://relice.herokuapp.com/check', requestOptions)
-                .then((response) => response.json())
-                .then((resp) => {
-                  console.log(resp);
+              fetch('https://relice.herokuapp.com/check', requestOptions).then(
+                (response) => {
                   alert('Reported');
-                });
+                  response.json();
+                }
+              );
             }
           }
         }

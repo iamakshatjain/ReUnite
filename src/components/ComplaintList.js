@@ -8,8 +8,6 @@ import {
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
-// TODO : remove mocking
-// import { Complaints } from '../mockdata';
 
 const useStyles = makeStyles((theme) => ({
   large: {

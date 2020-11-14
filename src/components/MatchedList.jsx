@@ -4,13 +4,10 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Card,
-  CardContent
+  Card
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
-// TODO : remove mocking
-import { Matches } from '../mockdata';
 
 const useStyles = makeStyles((theme) => ({
   medium: {
@@ -26,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '2rem'
   }
 }));
-const locations = ['Raja Park', 'Mansarovar', 'Sodala', 'City Palace'];
+const locations = ['Mansarovar'];
 
 const MatchingProfiles = ({ profiles }) => {
   const classes = useStyles();
@@ -52,7 +49,7 @@ const MatchingProfiles = ({ profiles }) => {
         {profiles[selectedProfile] && (
           <div>Accuracy : {(parseFloat(profiles[selectedProfile][1])*100).toFixed(2)}%</div>
         )}
-        {profiles.length>0 && <div>Location : "{locations[Math.floor(10 * Math.random()) % 4]}"</div>}
+        {profiles.length>0 && <div>Location : {locations[0]}</div>}
       </ul>
     </React.Fragment>
   );

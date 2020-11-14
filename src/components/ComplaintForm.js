@@ -69,7 +69,6 @@ const ComplaintForm = ({ Complaints, setComplaints }) => {
       lastSeen
     };
     setComplaints([...Complaints, data]);
-    console.log(data);
     axios
       .post('https://relice.herokuapp.com/store', data)
       .then((response) => {
